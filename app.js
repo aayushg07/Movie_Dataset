@@ -26,7 +26,7 @@ const app = express(); // Initialize the Express application
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded data from form submissions
 app.use(bodyParser.json()); // Parse JSON data from incoming requests
-// app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
 app.set('views',path.join(__dirname,'/views'));
 
 
