@@ -26,7 +26,7 @@ const app = express(); // Initialize the Express application
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded data from form submissions
 app.use(bodyParser.json()); // Parse JSON data from incoming requests
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
+// app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
 app.set('views',path.join(__dirname,'/views'));
 
 
@@ -38,7 +38,7 @@ app.set('view engine', 'hbs');
 
 
 // Database connection
-mongoose.connect(database.url, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(database.url,database.options ) //{ useNewUrlParser: true, useUnifiedTopology: true }
 .then(() => console.log("Database connected successfully"))
 .catch(err => console.error("Database connection error:", err));
 
@@ -183,8 +183,10 @@ app.get('/movies', async (req, res) => {
 // Route to get all movies
 app.get('/api/movies', async (req, res) => {
     try {
-        const movies = await Movie.find();
-        res.json(movies);
+        const { page = 1, limit = 10 } = req.query;  // Default to 10 movies per page
+        const movies = await Movie.find().skip((page - 1) * limit) .limit(Number(limit)).lean();
+        const total = await Movie.countDocuments(); // Get total number of movies
+        res.json({ total, page: Number(page), limit: Number(limit), movies });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
