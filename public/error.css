@@ -1,0 +1,46 @@
+/* error.css */
+
+/* Error Page Container */
+.error-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    color: #721c24;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Error Title */
+.error-container h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Error Message */
+.error-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Return Link */
+.error-container a {
+    font-size: 1.2em;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.error-container a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .error-container {
+        padding: 15px;
+    }
+}

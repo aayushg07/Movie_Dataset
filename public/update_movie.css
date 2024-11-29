@@ -1,0 +1,108 @@
+ /* Container for the form page */
+ .update-movie-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Movie Title */
+.update-movie-container h2 {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form Elements Container */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label Styling */
+label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 12px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Button styles for 'Back to Movies List' */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+    color: white;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .update-movie-container {
+        padding: 15px;
+    }
+
+    .update-movie-container h2 {
+        font-size: 1.8em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        font-size: 1.1em;
+    }
+
+    button[type="submit"] {
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,38 @@
+{{#> layout}} <!-- This ensures the page uses the layout defined in main.hbs -->
+<!-- Include specific CSS for this page (optional, can also be done globally) -->
+<head>
+    <link rel="stylesheet" href="/style.css">  <!-- This is the global CSS for all pages -->
+    <link rel="stylesheet" href="/movieDetail.css">  <!-- Page-specific CSS if needed -->
+</head>
+
+<div class="movie-detail-container">
+    <h1>{{movie.Title}}</h1> 
+
+    <div class="movie-details">
+      
+        <div class="movie-image">
+            {{#if movie.Poster}}
+                <img src="{{movie.Poster}}" alt="Poster">
+            {{else}}
+                <img src="https://via.placeholder.com/300x450?text=No+Image" alt="No Image Available">
+            {{/if}}
+        </div>
+
+       
+        <div class="movie-info">
+    <p><strong>IMDb Rating:</strong> {{movie.imdbRating}}</p> 
+            <p><strong>Year:</strong> {{movie.Year}}</p>
+            <p><strong>Released:</strong> {{movie.Released}}</p>
+            <p><strong>Genre:</strong> {{movie.Genre}}</p>
+            <p><strong>Director:</strong> {{movie.Director}}</p>
+            <p><strong>Language:</strong> {{movie.Language}}</p>
+            <p><strong>Awards:</strong> {{movie.Awards}}</p>
+    <p><strong>Plot:</strong> {{movie.Plot}}</p> 
+            <p><strong>Website:</strong> <a href="{{movie.Website}}" target="_blank">{{movie.Website}}</a></p>
+        </div>
+    </div>
+
+    <a href="/movies" class="back-button">Back to Movies List</a>
+</div>
+{{/layout}}  
+

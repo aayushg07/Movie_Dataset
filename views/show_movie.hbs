@@ -1,0 +1,66 @@
+<!-- show_movie.hbs -->
+<h2>Movie Details</h2>
+<a href="/movies">Back to Movies</a>
+{{#> layout}}
+<table>
+    <tr>
+        <th>Movie ID:</th>
+        <td>{{Movie_ID}}</td>
+    </tr>
+    <tr>
+        <th>Title:</th>
+        <td>{{Title}}</td>
+    </tr>
+       <tr>
+        <th>IMDB Rating:</th>
+        <td>{{imdbRating}}</td>
+    </tr>
+    <tr>
+        <th>Year:</th>
+        <td>{{Year}}</td>
+    </tr>
+    <tr>
+        <th>Released:</th>
+        <td>{{Released}}</td>
+    </tr>
+    <tr>
+        <th>Genre:</th>
+        <td>{{Genre}}</td>
+    </tr>
+       <tr>
+        <th>Director:</th>
+        <td>{{Director}}</td>
+    </tr>
+    <tr>
+        <th>Language:</th>
+        <td>{{Language}}</td>
+    </tr>
+       <tr>
+        <th>Awards:</th>
+        <td>{{Awards}}</td>
+    </tr>
+       <tr>
+        <th>Plot:</th>
+        <td>{{Plot}}</td>
+    </tr>
+    <tr>
+        <th>Website:</th>
+        <td><a href="{{Website}}" target="_blank">{{Website}}</a></td>
+    </tr>
+    <tr>
+        <th>Poster:</th>
+        <td>
+            {{#if Poster}}
+            <img src="{{Poster}}" alt="Movie Poster" style="max-width: 200px; max-height: 300px;">
+            {{else}}
+            <p>No poster available</p>
+            {{/if}}
+        </td>
+    </tr>
+</table>
+
+<div>
+    <a href="/movies/update/{{Movie_ID}}">Edit</a> |
+    <a href="/movies/delete/{{Movie_ID}}" onclick="return confirm('Are you sure you want to delete this movie?');">Delete</a>
+</div>
+{{/layout}}

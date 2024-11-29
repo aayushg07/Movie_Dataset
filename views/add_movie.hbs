@@ -1,0 +1,45 @@
+<!-- add_movie.hbs -->
+{{#> layout}}
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/add_movie.css">
+</head>
+
+<div class="add-movie-container">
+    <h2>{{#if Movie_ID}}Edit Movie: {{Title}}{{else}}Add a New Movie{{/if}}</h2>
+
+    <form action="/movies/add" method="POST">
+
+        {{!-- Movie ID field is omitted for new movies --}}
+        {{#unless Movie_ID}}
+        <label for="Movie_ID">Movie ID:</label>
+        <input type="text" name="Movie_ID" id="Movie_ID" required>
+        <br>
+        {{/unless}}
+
+        <label for="Title">Title:</label>
+        <input type="text" name="Title" id="Title" value="{{Title}}" required>
+        <br>
+
+        <label for="imdbRating">IMDB Rating:</label>
+        <input type="text" name="imdbRating" id="imdbRating" value="{{imdbRating}}">
+        <br>
+
+        <label for="Year">Year:</label>
+        <input type="number" name="Year" id="Year" value="{{Year}}" required>
+        <br>
+
+        <label for="Released">Released (YYYY-MM-DD):</label>
+        <input type="date" name="Released" id="Released" value="{{Released}}">
+        <br>
+
+        <label for="Genre">Genre:</label>
+        <input type="text" name="Genre" id="Genre" value="{{Genre}}">
+        <br>
+
+        <button type="submit">{{#if Movie_ID}}Update Movie{{else}}Add Movie{{/if}}</button>
+    </form>
+
+    <a href="/movies" class="back-button">Back to Movies</a>
+</div>
+{{/layout}}

@@ -1,0 +1,68 @@
+
+<!-- movies.hbs -->
+<head>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        // Check for the 'success' query parameter
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('success') === 'true') {
+                // Show the popup
+                const popup = document.getElementById('success-popup');
+                popup.style.display = 'block';
+
+                // Hide the popup after 3 seconds
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 3000);
+            }
+        };
+    </script>
+</head>
+<div id="success-popup" style="display: none; background-color: #4CAF50; color: white; padding: 15px; position: fixed; top: 10px; right: 10px; z-index: 1000; border-radius: 5px;">
+    Movie added successfully!
+</div>
+<h2>All Movies</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Poster</th>
+            <th>Movie ID</th>
+            <th>Title</th>
+            <th>Released</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each movies}}
+        <tr>
+            <td>
+                {{#if Poster}}
+                    <img src="{{Poster}}" alt="Movie Poster" style="max-width: 100px; max-height: 150px; object-fit: cover;">
+                {{else}}
+                    <img src="https://via.placeholder.com/100x150?text=No+Image" alt="No Image Available" style="max-width: 100px; max-height: 150px; object-fit: cover;">
+                {{/if}}
+            </td>
+            <td>{{Movie_ID}}</td>
+            <td>{{Title}}</td>
+            <td>{{Released}}</td>
+            <td>{{Genre}}</td>
+            <td>{{Director}}</td>
+            <td>
+                <button class="button-view" onclick="window.location.href='/movies/{{Movie_ID}}'">View</button> |
+                <button class="button-edit" onclick="window.location.href='/movies/update/{{Movie_ID}}'">Edit</button> |
+                <button 
+    class="button-delete" 
+    onclick="if (confirm('Are you sure you want to delete this movie?')) { window.location.href='/movies/delete/{{Movie_ID}}'; }"
+>
+    Delete
+</button>
+
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<a href="/movies/add" class="back-button">Add New Movie</a>
