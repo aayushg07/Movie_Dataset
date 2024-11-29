@@ -116,8 +116,6 @@ app.post('/movies/add', async (req, res) => {
             Genre
         });
         await newMovie.save();
-        // Redirect to the movies list with a query string indicating success
-        return res.redirect('/movies?success=true'); // Send a single response
         res.redirect('/movies');  // Redirect to the movies list after saving
     } catch (error) {
         console.error('Error adding movie:', error.message);
@@ -173,7 +171,6 @@ app.get('/movies', async (req, res) => {
   
     try {
       const movies = await Movie.find().lean();// Fetch movies and convert to plain JS objects
-        const success = req.query.success === 'true'; // Check for 'success' query parameter
         // console.log(movies);
         res.render('movies', { title: 'All Movies', movies }); // Render the movies page
     } catch (err) {
@@ -318,9 +315,6 @@ app.delete('/api/movies/:movie_id', async (req, res) => {
         if (!movie) {
             return res.status(404).json({ message: 'Movie not found' });
         }
-
-        // Respond with a success message
-        res.json({ message: 'Movie deleted successfully' });
     } catch (err) {
         console.error('Error deleting movie:', err);
         res.status(500).json({ message: err.message });
