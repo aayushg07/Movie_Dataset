@@ -19,9 +19,12 @@
         };
     </script>
 </head>
-<div id="success-popup" style="display: none; background-color: #4CAF50; color: white; padding: 15px; position: fixed; top: 10px; right: 10px; z-index: 1000; border-radius: 5px;">
-    Movie added successfully!
+{{#if success}}
+<div class="popup success">
+    <p>Movie added successfully!</p>
+    <button class="close-popup" onclick="document.querySelector('.popup').style.display='none'">Close</button>
 </div>
+{{/if}}
 <h2>All Movies</h2>
 <table>
     <thead>
