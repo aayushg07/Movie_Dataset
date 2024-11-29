@@ -63,18 +63,15 @@ app.get('/movies/update/:movieID', async (req, res) => {
         res.status(500).render('error', { message: 'Error fetching movie for edit', title: 'Error' });
     }
 });
-
 // Route to handle the update submission (POST)
 app.post('/movies/update/:movieID', async (req, res) => {
 	const movieID = req.params.movieID;
 	console.log("Form submitted with data", req.body);
     try {
-
         // Update the movie fields based on the form data
         const updatedMovie = await Movie.findOneAndUpdate(
             { Movie_ID: movieID },
-            {
-                Title: req.body.Title,
+            {   Title: req.body.Title,
                 imdbRating: req.body.imdbRating,
                 Year: req.body.Year,
                 Released: req.body.Released,
@@ -87,7 +84,6 @@ app.post('/movies/update/:movieID', async (req, res) => {
             },
             { new: true }
         );
-
         if (!updatedMovie) {
             return res.status(404).render('error', { message: 'Movie not found for update', title: 'Error' });
         }
