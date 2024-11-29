@@ -174,8 +174,9 @@ app.get('/', (req, res) => {
 
 // Show all movies
 app.get('/movies', async (req, res) => {
+  
     try {
-        const movies = await Movie.find().lean(); // Fetch movies and convert to plain JS objects
+      const movies = await Movie.find().lean();// Fetch movies and convert to plain JS objects
         const success = req.query.success === 'true'; // Check for 'success' query parameter
         // console.log(movies);
         res.render('movies', { title: 'All Movies', movies }); // Render the movies page
