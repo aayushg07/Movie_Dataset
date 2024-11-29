@@ -38,7 +38,7 @@ app.set('view engine', 'hbs');
 
 
 // Database connection
-mongoose.connect(database.url,database.options ) //{ useNewUrlParser: true, useUnifiedTopology: true }
+mongoose.connect(database.url, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log("Database connected successfully"))
 .catch(err => console.error("Database connection error:", err));
 
